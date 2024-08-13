@@ -28,3 +28,16 @@ data_pivot = data_filtered.pivot_table(
 
 # Display the pivot table
 print(data_pivot)
+
+
+
+solution to a problem:
+
+if 'Product Level 2' in data_pivot.columns:
+    print("Column 'Product Level 2' already exists")
+
+data_pivot = data_pivot.drop(columns=['Product Level 2'])
+# Or, you can rename it
+data_pivot = data_pivot.rename(columns={'Product Level 2': 'Product Level 2_old'})
+
+
