@@ -13,3 +13,18 @@ print(data.info())
 # Display summary statistics for numerical columns
 print("\nSummary statistics for numerical columns:")
 print(data.describe())
+
+New line items:
+# Drop rows where 'Product L2' is blank
+data_filtered = data.dropna(subset=['Product L2'])
+
+# Create pivot table
+data_pivot = data_filtered.pivot_table(
+    index=['Master Name', 'Master Industry', 'Product Region', 'Month', 'Year'],
+    columns='Product L2',
+    values='CV',
+    aggfunc='sum'
+)
+
+# Display the pivot table
+print(data_pivot)
