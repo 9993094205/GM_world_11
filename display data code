@@ -1,0 +1,15 @@
+# Display the first few rows of the DataFrame
+print("First 5 rows of the DataFrame:")
+print(data.head())
+
+# Optionally, display a random sample of rows
+print("\nRandom sample of 5 rows from the DataFrame:")
+print(data.sample(5))
+
+# Display basic information about the DataFrame, including data types and non-null counts
+print("\nBasic information about the DataFrame:")
+print(data.info())
+
+# Display summary statistics for numerical columns
+print("\nSummary statistics for numerical columns:")
+print(data.describe())
