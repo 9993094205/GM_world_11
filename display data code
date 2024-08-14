@@ -41,3 +41,31 @@ data_pivot = data_pivot.drop(columns=['Product Level 2'])
 data_pivot = data_pivot.rename(columns={'Product Level 2': 'Product Level 2_old'})
 
 
+
+
+
+import pandas as pd
+import numpy as np
+
+# Load the data
+csv_file_path = 'c:/Users/xhzys/Downloads/Global Market Extract Summary.csv'
+data = pd.read_csv(csv_file_path)
+
+# Ensure no duplicate column names
+data.columns = data.columns.str.strip()
+
+# Filter data by Product Region to include only 'Americas'
+data_filtered = data[data['Product Region'] == 'Americas']
+
+# Group by 'Month' and calculate the correlation matrix for each group
+output_file = 'correlation_matrices.xlsx'
+with pd.ExcelWriter(output_file) as writer:
+    for month, group in data_filtered.groupby('Month'):
+        # Calculate the correlation matrix
+        correlation_matrix = group.corr()
+
+        # Write the correlation matrix to a sheet named after the month
+        correlation_matrix.to_excel(writer, sheet_name=str(month))
+
+print(f"Correlation matrices have been saved to {output_file}.")
+
