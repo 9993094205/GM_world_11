@@ -69,3 +69,8 @@ with pd.ExcelWriter(output_file) as writer:
 
 print(f"Correlation matrices have been saved to {output_file}.")
 
+
+
+data_pivot = data_pivot.replace({',': ''}, regex=True)
+
+
